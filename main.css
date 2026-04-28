@@ -6,24 +6,24 @@
   --color-secondary: #f59e0b;
   --color-secondary-dark: #d97706;
   --color-success: #10b981;
-  
+
   /* Text Colors */
   --color-text-main: #f8fafc;
   --color-text-muted: #cbd5e1;
   --color-heading: #ffffff;
-  
+
   /* Backgrounds */
   --color-bg-base: #0f172a;
   --color-bg-surface: #1e293b;
   --color-bg-surface-light: #334155;
-  
+
   /* Pricing Special Colors */
   --color-price-accent: #10b981;
   --color-price-strike: #ef4444;
 
   /* Typography */
   --font-main: 'Inter', sans-serif;
-  
+
   /* Spacing & Misc */
   --radius-md: 12px;
   --radius-lg: 24px;
@@ -32,7 +32,7 @@
   --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.5);
   --shadow-glow: 0 0 20px rgba(59, 130, 246, 0.4);
   --shadow-glow-price: 0 0 30px rgba(16, 185, 129, 0.2);
-  
+
   /* Transitions */
   --transition-fast: 0.2s ease;
   --transition-normal: 0.3s ease;
@@ -137,9 +137,17 @@ ul {
 }
 
 @keyframes pulse {
-  0% { box-shadow: 0 0 0 0 rgba(59, 130, 246, 0.7); }
-  70% { box-shadow: 0 0 0 15px rgba(59, 130, 246, 0); }
-  100% { box-shadow: 0 0 0 0 rgba(59, 130, 246, 0); }
+  0% {
+    box-shadow: 0 0 0 0 rgba(59, 130, 246, 0.7);
+  }
+
+  70% {
+    box-shadow: 0 0 0 15px rgba(59, 130, 246, 0);
+  }
+
+  100% {
+    box-shadow: 0 0 0 0 rgba(59, 130, 246, 0);
+  }
 }
 
 /* Header */
@@ -242,8 +250,13 @@ ul {
 }
 
 @keyframes float {
-  0% { transform: translate(0, 0) scale(1); }
-  100% { transform: translate(30px, 50px) scale(1.1); }
+  0% {
+    transform: translate(0, 0) scale(1);
+  }
+
+  100% {
+    transform: translate(30px, 50px) scale(1.1);
+  }
 }
 
 .hero-container {
@@ -303,7 +316,8 @@ ul {
   display: flex;
 }
 
-.avatars img, .avatar-more {
+.avatars img,
+.avatar-more {
   width: 40px;
   height: 40px;
   border-radius: 50%;
@@ -348,6 +362,15 @@ ul {
   position: relative;
   cursor: pointer;
   transition: transform var(--transition-normal);
+}
+
+.video-wrapper iframe {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  border-radius: inherit;
 }
 
 .video-wrapper:hover {
@@ -526,6 +549,8 @@ ul {
 .pricing-container {
   display: flex;
   justify-content: center;
+  align-items: center;
+  gap: 2rem;
 }
 
 .glass-panel-premium {
@@ -681,6 +706,32 @@ ul {
   font-size: 1.25rem;
 }
 
+.pricing-disclaimer {
+  background-color: var(--color-bg-surface);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: var(--radius-lg);
+  padding: 2rem;
+  max-width: 400px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  gap: 1rem;
+}
+
+.disclaimer-icon {
+  font-size: 2.5rem;
+  line-height: 1;
+}
+
+.pricing-disclaimer p {
+  color: var(--color-text-muted);
+  font-size: 0.85rem;
+  line-height: 1.6;
+}
+
 /* Footer */
 .footer {
   background: var(--color-bg-surface);
@@ -757,62 +808,83 @@ ul {
 
 /* Responsive */
 @media (max-width: 992px) {
+
   .hero-container,
   .about-container {
     grid-template-columns: 1fr;
     text-align: center;
   }
-  
+
   .hero-title {
     font-size: 2.75rem;
   }
-  
+
   .hero-subtitle {
     margin: 0 auto 2rem;
   }
-  
+
   .hero-actions {
     justify-content: center;
   }
-  
+
   .social-proof {
     justify-content: center;
   }
-  
+
   .experience-badge {
     right: 50%;
     transform: translateX(50%);
     bottom: -1rem;
   }
-  
+
+  .pricing-container {
+    flex-direction: column;
+  }
+
   .footer-container {
     grid-template-columns: 1fr;
     gap: 2rem;
     text-align: center;
   }
-  
+
   .footer-info p {
     margin: 1rem auto 0;
   }
 }
 
 @media (max-width: 768px) {
-  .nav {
-    display: none; /* simple mobile hide for now */
+  .container {
+    padding: 0 1.5rem;
   }
-  
+
+  .nav {
+    display: none;
+    /* simple mobile hide for now */
+  }
+
+  .hero {
+    padding-top: 8rem;
+    padding-bottom: 4rem;
+  }
+
   .hero-title {
     font-size: 2.25rem;
   }
-  
+
   .hero-actions {
     flex-direction: column;
   }
-  
+
   .section {
     padding: 4rem 0;
   }
-  
+
+  .glass-panel-premium,
+  .pricing-disclaimer {
+    padding: 2rem 1.5rem;
+    max-width: 100%;
+  }
+
   .amount {
     font-size: 3rem;
   }
