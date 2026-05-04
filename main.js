@@ -67,4 +67,40 @@ document.addEventListener('DOMContentLoaded', () => {
             }, 1500);
         });
     }
+
+    // Checkout Modal Logic
+    const checkoutBtns = document.querySelectorAll('.checkout-btn');
+    const modal = document.getElementById('disclaimerModal');
+    const agreeBtn = document.getElementById('agreeBtn');
+    const cancelBtn = document.getElementById('cancelBtn');
+    let currentCheckoutUrl = '';
+
+    if (modal && agreeBtn && cancelBtn) {
+        checkoutBtns.forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                e.preventDefault();
+                currentCheckoutUrl = btn.getAttribute('href');
+                modal.classList.add('active');
+            });
+        });
+
+        agreeBtn.addEventListener('click', () => {
+            if (currentCheckoutUrl) {
+                window.location.href = currentCheckoutUrl;
+            }
+        });
+
+        cancelBtn.addEventListener('click', () => {
+            modal.classList.remove('active');
+            currentCheckoutUrl = '';
+        });
+
+        // Close on clicking outside
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) {
+                modal.classList.remove('active');
+                currentCheckoutUrl = '';
+            }
+        });
+    }
 });
